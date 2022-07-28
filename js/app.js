@@ -1,3 +1,4 @@
+// // // // // // Palindroma
 // Funzione che inverte la stringa
 function stringReverse (str) {
     let strReverse = [];
@@ -29,6 +30,50 @@ function isPalindroma (word) {
     }
 }
 
-const palWord = prompt('Inserisci una parola (E\' Keys Sensitive!)');
+// const palWord = prompt('Inserisci una parola (E\' Keys Sensitive!)');
+// console.log(isPalindroma(palWord));
 
-console.log(isPalindroma(palWord));
+
+// // // // // // Pari e Dispari
+
+// Funzione che genera un numero da 1 a 5
+function generatorIntNum (){
+    const genIntNum = Math.floor(Math.random() * (5) + 1);
+    return genIntNum;
+}
+
+// Funzione che stabilisce se pari o dispari
+function isEven (num){
+    if(num % 2 === 0){
+        return true;
+    }
+    return false;
+}
+
+let choice, pari = false, numPlayer;
+// Controllo scelta pari o dispari
+do{
+    choice = parseInt(prompt('Scegli: Pari >> 0 << <> Dispari >> 1 << [I numeri maggiori di 1 saranno contati come pari]'));
+    if(choice === 0 || choice > 1){
+        pari = true;
+    }
+}while(isNaN(choice)); 
+
+// Controllo numero giocatore
+do{
+    numPlayer = parseInt(prompt('Inserisci un numero da 1 a 5'));
+    if(numPlayer > 5 || numPlayer < 1){
+        console.log('La tua mano non ha ' + numPlayer + ' dita!');
+    }
+}while(isNaN(numPlayer));
+const numPc = generatorIntNum();
+const sumNum = numPlayer + numPc;
+
+console.log('PC >> ' + numPc + '; Player ' + pari + ' >> ' + numPlayer + '; Somma >> ' + sumNum);
+console.log(pari, isEven(sumNum));
+
+if(pari === isEven(sumNum)){
+    console.log('Player ha vinto!');
+} else{
+    console.log('PC ha vinto!');
+}
